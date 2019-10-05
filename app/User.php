@@ -6,9 +6,17 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable{
+
     use Notifiable;
+
+    //Roles
+    const BASICO = 1;
+    const MEDIO = 2;
+    const MEDIO_ALTO = 3;
+    const ALTO_MEDIO = 4;
+    const ALTO = 5;
+
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','rol'
     ];
 
     /**
@@ -36,4 +44,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 }
